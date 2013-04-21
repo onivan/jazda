@@ -1,5 +1,5 @@
 /*
-    Copyright 2011 Paweł Czaplejewicz
+    Copyright 2011, 2013 Paweł Czaplejewicz
 
     This file is part of Jazda.
 
@@ -54,7 +54,7 @@ void maxspeed_reset(void) {
     module_flags.maxspeed_changed = true;
 }
 
-module_actions_t *maxspeed_select(const uint8_t state) {
+const module_actions_t *maxspeed_select(const uint8_t state) {
     if (state) {
         maxspeed_reset();
     }

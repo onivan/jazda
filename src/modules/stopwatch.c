@@ -1,5 +1,5 @@
 /*
-    Copyright 2011 Paweł Czaplejewicz
+    Copyright 2011, 2013 Paweł Czaplejewicz
 
     This file is part of Jazda.
 
@@ -65,7 +65,7 @@ void stopwatch_reset(void) {
    module_flags.stopwatch_changed = true;
 }
 
-module_actions_t *stopwatch_select(uint8_t state) {
+const module_actions_t *stopwatch_select(uint8_t state) {
    if (state) {
       stopwatch_reset();
    }

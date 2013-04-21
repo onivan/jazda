@@ -1,5 +1,5 @@
 /*
-    Copyright 2011 Paweł Czaplejewicz
+    Copyright 2011, 2013 Paweł Czaplejewicz
 
     This file is part of Jazda.
 
@@ -38,7 +38,7 @@ depending on future API).
     void stopwatch_reset(void);
 #endif
 
-module_actions_t *combined_reset_on_select(uint8_t state) {
+const module_actions_t *combined_reset_on_select(uint8_t state) {
     if (!state) {
         #ifdef MAXSPEED
             maxspeed_reset();

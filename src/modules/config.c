@@ -1,5 +1,5 @@
 /*
-    Copyright 2011 Paweł Czaplejewicz
+    Copyright 2011, 2013 Paweł Czaplejewicz
 
     This file is part of Jazda.
 
@@ -101,7 +101,7 @@ void config_select_digit_right(const uint8_t state) {
 
 const module_actions_t config_select_digit_actions = {&config_select_digit_left, &config_select_digit_right};
 
-const module_actions_t* config_select(const uint8_t state) {
+const module_actions_t* config_select(uint8_t state) {
     if (!state) {
         module_flags.config_changed = true;
         if (config_level == 0) {

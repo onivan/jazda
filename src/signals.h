@@ -37,3 +37,7 @@ inline void on_each_second(void);
 inline void on_wheel_stop(uint16_t now);
 
 void on_pulse_distance_change(void);
+
+#ifdef BACKLIGHT_BUTTON
+    inline void on_backlight_button(uint8_t state);
+#endif

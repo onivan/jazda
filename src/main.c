@@ -1,5 +1,5 @@
 /*
-    Copyright 2011 Paweł Czaplejewicz
+    Copyright 2011, 2013 Paweł Czaplejewicz
 
     This file is part of Jazda.
 
@@ -49,6 +49,9 @@
 #ifdef STORAGE
     #include "builtins/storage.c"
 #endif
+#ifdef BACKLIGHT
+    #include "dev/backlight.c"
+#endif
 
 // sensors (data/event capture)
 #include "sensors/wheel.c"
@@ -90,6 +93,9 @@ void main(void) {
   lcd_setup();
   lcd_init();
   
+  #ifdef BACKLIGHT
+      backlight_init();
+  #endif
   #ifdef BACKLIGHT_VOLTAGE
      adc_init();
   #endif

@@ -1,5 +1,5 @@
-/*
-    Copyright 2011, 2013 Paweł Czaplejewicz
+ /*
+    Copyright 2013 Paweł Czaplejewicz
 
     This file is part of Jazda.
 
@@ -17,20 +17,37 @@
     along with Jazda.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __COMMON_H__
-#define __COMMON_H__
+/* Backlight state management
+ Requires:
+ BACKLIGHT{DIR|PORT|PIN} defines
+*/
 
-#include <stdlib.h>
+#include "../common.h"
+#include "backlight.h"
 
-// offers some type-safety. Use this instead of #defined
-enum boolean_enum {
-    FALSE = 0,
-    TRUE = 1
-} boolean_t;
+volatile uint8_t backlight_state;
 
-#define true 1
-#define false 0
-#define HIGH(PORT, PIN) PORT |= _BV(PIN)
-#define LOW(PORT, PIN) PORT &= ~_BV(PIN)
+void backlight_init(void) {
+    HIGH(BACKLIGHTDIR, BACKLIGHTPIN);
+    backlight_off();
+}
 
-#endif // __COMMON_H__
+void backlight_switch(void) {
+    if (backlight_state == 0) {
+        backlight_on();
+    } else {
+        backlight_off();
+    }
+}
+
+// TODO: see if can read output state
+
+void backlight_off(void) {
+    LOW(BACKLIGHTPORT, BACKLIGHTPIN);
+    backlight_state = 0;
+}
+
+void backlight_on(void) {
+    HIGH(BACKLIGHTPORT, BACKLIGHTPIN);
+    backlight_state = 1;
+}
